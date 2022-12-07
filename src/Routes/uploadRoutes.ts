@@ -8,7 +8,7 @@ import uploadCSV from '../Utils/uploadCSV';
 const uploadRouter = Router();
 
 uploadRouter.get('/upload', (req, res) => {
-    res.sendFile(path.join(__dirname, '../', '../', '/public/index.html'));
+    res.sendFile(path.join(__dirname, '../', '/Views/index.html'));
 });
 
 uploadRouter.post('/import-csv', upload.single('import-csv'), (req) => {

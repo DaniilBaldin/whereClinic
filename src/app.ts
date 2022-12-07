@@ -6,6 +6,7 @@ import path from 'path';
 dotenv.config();
 
 import uploadRouter from './Routes/uploadRoutes';
+import clinicsRouter from './Routes/clinicRoutes';
 
 const PORT = process.env.PORT || 3000;
 
@@ -26,6 +27,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', (req, res) => {
+    res.send('Hello there! General Kenobi!');
+});
+
 app.use(
     cors({
         origin: '*',
@@ -44,13 +49,9 @@ app.use(
     })
 );
 
-app.get('/', (req, res) => {
-    res.send('Hello there! General Kenobi!');
-});
-
 app.use(express.json());
 
-// app.use('/', uploadRouter);
+app.use('/', clinicsRouter, uploadRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
