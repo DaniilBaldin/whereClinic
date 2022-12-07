@@ -1,0 +1,1 @@
+# whereClinic - REST API for search local clinics in Australia, based on TypeScript, Express and PostgreSQL.
