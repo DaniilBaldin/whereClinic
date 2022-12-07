@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 
 app.use(express.json());
 
-app.use('/', uploadRouter);
+// app.use('/', uploadRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
