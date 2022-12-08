@@ -1,14 +1,14 @@
-import { Client } from 'pg';
 import { DATA_SOURCES } from '../Config/databaseConfig';
 const dataSource = DATA_SOURCES.postgres;
+import { PgConnector } from 'drizzle-orm-pg';
+import { Pool } from 'pg';
 
-const client = new Client({
+const pool = new Pool({
     connectionString: dataSource.DB_URL,
     ssl: {
         rejectUnauthorized: false,
     },
 });
+const connector = new PgConnector(pool);
 
-client.connect();
-
-export default client;
+export default connector;

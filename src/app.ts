@@ -5,8 +5,8 @@ import cors from 'cors';
 import path from 'path';
 dotenv.config();
 
-import uploadRouter from './Routes/uploadRoutes';
 import clinicsRouter from './Routes/clinicRoutes';
+import citiesRouter from './Routes/citiesRoutes';
 
 const PORT = process.env.PORT || 3000;
 
@@ -51,7 +51,7 @@ app.use(
 
 app.use(express.json());
 
-app.use('/', clinicsRouter, uploadRouter);
+app.use('/', clinicsRouter, citiesRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
