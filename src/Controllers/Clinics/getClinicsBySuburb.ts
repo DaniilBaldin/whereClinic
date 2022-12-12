@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RequestHandler } from 'express';
 import { like } from 'drizzle-orm/expressions';
 import connector from '../../Utils/databaseConnect';
@@ -16,8 +17,16 @@ const getClinicsBySuburb: RequestHandler = async (req, res) => {
             success: false,
         });
     } else {
+        const result = Clinics.map((e: any) => {
+            delete e.nearby1Txt, delete e.nearby2Txt, delete e.nearby3Txt, delete e.nearby4Txt;
+            delete e.nearby1Link, delete e.nearby2Link, delete e.nearby3Link, delete e.nearby4Link;
+            const slug = e.slug.split('/').reverse()[0];
+            e.nearby = `/nearby/${slug}`;
+            delete e.slug;
+            return e;
+        });
         res.status(200).json({
-            data: Clinics,
+            data: result,
             success: true,
         });
     }

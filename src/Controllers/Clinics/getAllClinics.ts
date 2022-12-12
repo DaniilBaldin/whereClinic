@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RequestHandler } from 'express';
 import connector from '../../Utils/databaseConnect';
 
@@ -20,11 +21,18 @@ const getAllClinics: RequestHandler = async (req, res) => {
             success: false,
         });
     } else {
+        const result = allClinics.map((e: any) => {
+            delete e.nearby1Txt, delete e.nearby2Txt, delete e.nearby3Txt, delete e.nearby4Txt;
+            delete e.nearby1Link, delete e.nearby2Link, delete e.nearby3Link, delete e.nearby4Link;
+            const slug = e.slug.split('/').reverse()[0];
+            e.nearby = `/nearby/${slug}`;
+            return e;
+        });
         res.status(200).json({
             page: parseInt(page),
             pages: totalPages,
             hasNextPage: limit * parseInt(page) < dataLength[0],
-            data: allClinics,
+            data: result,
             success: true,
         });
     }
