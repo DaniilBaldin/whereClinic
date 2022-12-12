@@ -7,6 +7,7 @@ dotenv.config();
 
 import clinicsRouter from './Routes/clinicRoutes';
 import citiesRouter from './Routes/citiesRoutes';
+import suburbsRouter from './Routes/suburbsRoutes';
 
 const PORT = process.env.PORT || 3000;
 
@@ -51,7 +52,7 @@ app.use(
 
 app.use(express.json());
 
-app.use('/', clinicsRouter, citiesRouter);
+app.use('/', clinicsRouter, citiesRouter, suburbsRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
