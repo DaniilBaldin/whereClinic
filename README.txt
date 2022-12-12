@@ -25,3 +25,19 @@ Search for clinics by state.
 
 // method: GET - https://where-clinic-app.herokuapp.com/nearby/:slug
 Search for clinics in nearby areas by clinic slug.
+
+            CITIES
+
+// method: GET - https://where-clinic-app.herokuapp.com/cities
+Get all cities name, slug and state from database. 
+
+// method: GET - https://where-clinic-app.herokuapp.com/get-city/:city
+Search specific city name, slug and state in database. 
+
+            SUBURBS
+
+// method: GET - https://where-clinic-app.herokuapp.com/suburbs
+Get all suburbs name, slug and state from database. 
+
+// method: GET - https://where-clinic-app.herokuapp.com/get-suburb/:suburb
+Search specific suburb name, slug and state in database. 
