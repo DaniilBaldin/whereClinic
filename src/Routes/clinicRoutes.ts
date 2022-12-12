@@ -8,6 +8,7 @@ import getClinicsByName from '../Controllers/Clinics/getClinicsByName';
 import getClinicsByCity from '../Controllers/Clinics/getClinicsByCity';
 import getClinicsBySuburb from '../Controllers/Clinics/getClinicsBySuburb';
 import getClinicsByState from '../Controllers/Clinics/getClinicsByState';
+import getNearbyClinics from '../Controllers/Clinics/getNearbyClinics';
 
 const clinicsRouter = Router();
 clinicsRouter.get('/clinics', getAllClinics);
@@ -17,6 +18,7 @@ clinicsRouter.get('/city/:city', getClinicsByCity);
 clinicsRouter.get('/suburb/:suburb', getClinicsBySuburb);
 clinicsRouter.get('/state/:state', getClinicsByState);
 clinicsRouter.get('/clinic/:slug', getClinicByName);
+clinicsRouter.get('/nearby/:nearby', getNearbyClinics);
 
 clinicsRouter.use(bodyParser.json());
 
